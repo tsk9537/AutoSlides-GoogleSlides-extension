@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoSlides Controller</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+      </div>
+      <div>
+        <h1 class="title">AutoSlides</h1>
+        <p class="subtitle">Google Slides Auto-Advancer</p>
+      </div>
+    </div>
+    <div id="statusBadge" class="status-badge status-idle">Ready</div>
+  </div>
+
+  <div class="card interval-card">
+    <div class="card-header-flex">
+      <label class="section-label">Slide Interval</label>
+      <span id="effectiveIntervalLabel" class="interval-tag">5 seconds</span>
+    </div>
+    <div class="interval-input-group">
+      <input type="number" id="intervalInput" min="0.5" max="3600" value="5" step="any" />
+      <div class="unit-selector">
+        <button type="button" id="unitSecBtn" class="unit-btn active">Sec</button>
+        <button type="button" id="unitMinBtn" class="unit-btn ">Min</button>
+      </div>
+    </div>
+
+    <div class="quick-presets">
+      <button class="preset-btn" data-sec="3">3s</button>
+      <button class="preset-btn" data-sec="5">5s</button>
+      <button class="preset-btn" data-sec="10">10s</button>
+      <button class="preset-btn" data-sec="30">30s</button>
+      <button class="preset-btn" data-sec="60">1m</button>
+      <button class="preset-btn" data-sec="120">2m</button>
+      <button class="preset-btn" data-sec="300">5m</button>
+    </div>
+  </div>
+
+  <div class="options-accordion">
+    <button type="button" id="toggleOptionsBtn" class="accordion-toggle">
+      <span>Advanced Automation Options</span>
+      <svg id="optionsChevron" class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+    <div id="optionsBody" class="accordion-body">
+      <div class="toggle-list">
+        <label class="toggle-item">
+          <div class="toggle-info">
+            <span class="toggle-title">Minimize Options on Start</span>
+            <span class="toggle-desc">Closes popup on start for a clean view</span>
+          </div>
+          <input type="checkbox" id="minimizeOnStartToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+
+        <label class="toggle-item">
+          <div class="toggle-info">
+            <span class="toggle-title">Full Screen Presenter View</span>
+            <span class="toggle-desc">Hides tabs, omnibar & browser menus</span>
+          </div>
+          <input type="checkbox" id="autoFullscreenToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+
+        <label class="toggle-item">
+          <div class="toggle-info">
+            <span class="toggle-title">Auto-Start Slideshow</span>
+            <span class="toggle-desc">Launch into presentation mode if in editor</span>
+          </div>
+          <input type="checkbox" id="autoStartToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+
+        <label class="toggle-item">
+          <div class="toggle-info">
+            <span class="toggle-title">Infinite Loop Deck</span>
+            <span class="toggle-desc">Restart from slide 1 when reaching the end</span>
+          </div>
+          <input type="checkbox" id="loopToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="startBtn" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      Start Auto Slideshow
+    </button>
+    <button id="stopBtn" class="btn btn-secondary" style="display: none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="6" y="4" width="4" height="16"></rect>
+        <rect x="14" y="4" width="4" height="16"></rect>
+      </svg>
+      Pause / Stop Slideshow
+    </button>
+  </div>
+
+  <div class="footer">
+    <span>Shortcut: <strong>Alt + P</strong> to toggle</span>
+    <span id="activeTimer">--</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
