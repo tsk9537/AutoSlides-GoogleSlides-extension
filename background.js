@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log('[AutoSlides] Background service worker initialized.');
   chrome.storage.sync.set({
-    interval: 5,
+    interval: 30,
     unit: 'seconds',
     minimizeOnStart: true,
     autoStartSlideshow: true,

@@ -8,7 +8,7 @@
   let nextAdvanceTimestamp = 0;
 
   let settings = {
-    interval: 5,
+    interval: 30,
     unit: 'seconds',
     autoStartSlideshow: true,
     autoFullscreen: true,
@@ -28,7 +28,7 @@
     if (settings.unit === 'minutes') {
       return Math.max(0.5, (parseFloat(settings.interval) || 1) * 60);
     }
-    return Math.max(0.5, parseFloat(settings.interval) || 5);
+    return Math.max(0.5, parseFloat(settings.interval) || 30);
   }
 
   // Check persistent session storage & chrome sync storage on initial injection

@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function updateIntervalLabel() {
     if (effectiveIntervalLabel && intervalInput) {
-      effectiveIntervalLabel.textContent = (intervalInput.value || 5) + ' ' + currentUnit;
+      effectiveIntervalLabel.textContent = (intervalInput.value || 30) + ' ' + currentUnit;
     }
   }
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (isContextValid() && chrome.storage && chrome.storage.sync) {
     try {
       chrome.storage.sync.get({
-        interval: 5,
+        interval: 30,
         unit: 'seconds',
         minimizeOnStart: true,
         autoStartSlideshow: true,
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         isRunning: false
       }, (items) => {
         if (!items) return;
-        if (intervalInput) intervalInput.value = items.interval || 5;
+        if (intervalInput) intervalInput.value = items.interval || 30;
         currentUnit = items.unit || 'seconds';
         setUnit(currentUnit);
         if (minimizeOnStartToggle) minimizeOnStartToggle.checked = items.minimizeOnStart !== false;
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function getSettings() {
     return {
-      interval: intervalInput ? (parseFloat(intervalInput.value) || 5) : 5,
+      interval: intervalInput ? (parseFloat(intervalInput.value) || 30) : 30,
       unit: currentUnit,
       minimizeOnStart: minimizeOnStartToggle ? minimizeOnStartToggle.checked : true,
       autoStartSlideshow: autoStartToggle ? autoStartToggle.checked : true,
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       if (startBtn) startBtn.style.display = 'none';
       if (stopBtn) stopBtn.style.display = 'flex';
-      if (activeTimer) activeTimer.textContent = 'Advancing every ' + (intervalInput ? intervalInput.value : '5') + ' ' + currentUnit;
+      if (activeTimer) activeTimer.textContent = 'Advancing every ' + (intervalInput ? intervalInput.value : '30') + ' ' + currentUnit;
     } else {
       if (statusBadge) {
         statusBadge.textContent = 'Ready';
